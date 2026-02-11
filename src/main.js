@@ -18,11 +18,11 @@ async function getData(cityName) {
 searchBtn.addEventListener("click", (event) => {
   event.preventDefault();
   (async function addToPage() {
-    const temp = await getData("pune");
+    const temp = await getData(city.value);
     console.log(temp)
   })()
-
   form.reset();
+
 });
 
 // console.log(await temp)
