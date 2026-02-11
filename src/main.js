@@ -1,6 +1,8 @@
 const city = document.getElementById("city");
 const searchBtn = document.querySelector("form > button");
 const form = document.querySelector("form");
+const p = document.createElement("p");
+const container = document.querySelector(".container");
 
 async function getData(cityName) {
   try {
@@ -9,7 +11,7 @@ async function getData(cityName) {
     );
     const data = await cityDetail.json();
     // console.log(data);
-    return data.currentConditions.temp
+    return data.currentConditions.temp;
   } catch (e) {
     console.log(e);
   }
@@ -17,12 +19,14 @@ async function getData(cityName) {
 
 searchBtn.addEventListener("click", (event) => {
   event.preventDefault();
+  const head = document.createElement("h1");
+  head.textContent = city.value;
   (async function addToPage() {
     const temp = await getData(city.value);
-    console.log(temp)
-  })()
+    p.textContent = `${temp}`;
+    container.append(head, p);
+  })();
   form.reset();
-
 });
 
 // console.log(await temp)
